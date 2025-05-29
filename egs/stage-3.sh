@@ -35,11 +35,11 @@ lr_adapt=False
 
 n_print_steps=100
 
-tr_data=/l/PathoGen/Adinath/train_videos_labels_MC.csv
-te_data=/l/PathoGen/Adinath/val_videos_labels_MC.csv
+tr_data=/l/PathoGen/Adinath/OpenAVFF/train_videos_labels_MC.csv
+te_data=/l/PathoGen/Adinath/OpenAVFF/val_videos_labels_MC.csv
 
 # exp_dir=./exp/self-pretrain
-save_dir=./exp/stage-3
+save_dir=./exp1/stage-3
 mkdir -p $save_dir
 mkdir -p ${save_dir}/models
 
