@@ -2,7 +2,7 @@ import os
 import csv
 
 # Set the path to your train folder
-train_dir = '/home/javed/Adinath/deepfake_detection_methods/Train_Test_split/train'
+train_dir = '/l/PathoGen/Adinath/Train_Test_split/train'
 output_csv = 'train_videos_labels_MC.csv'
 
 # Define the folder-to-label mapping
