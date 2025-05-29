@@ -19,7 +19,7 @@ norm_pix_loss=True
 # pretrain_path=/l/PathoGen/Adinath/OpenAVFF/stage-3.pth
 
 lr=1e-5
-head_lr=50
+head_lr=1
 epoch=10
 lrscheduler_start=2
 lrscheduler_decay=0.5
