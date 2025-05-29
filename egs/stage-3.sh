@@ -16,7 +16,7 @@ mae_loss_weight=1.0
 norm_pix_loss=True
 
 # you can use any checkpoints with a decoder, but by default, we use vision-MAE checkpoint
-pretrain_path=/home/zy/lyf/VideoCAVMAE/_Checkpoints/kinestic-pretrain-full.pth
+pretrain_path=/l/PathoGen/Adinath/OpenAVFF/stage-3.pth
 
 lr=1e-5
 head_lr=50
@@ -30,20 +30,20 @@ dataset_mean=-5.081
 dataset_std=4.4849
 target_length=1024
 noise=True
-batch_size=42
+batch_size=32
 lr_adapt=False
 
 n_print_steps=100
 
-tr_data=/home/zy/lyf/cav-mae/data/trainset.csv
-te_data=/home/zy/lyf/cav-mae/data/valset.csv
+tr_data=/l/PathoGen/Adinath/train_videos_labels.csv
+te_data=/l/PathoGen/Adinath/val_videos_labels.csv
 
 # exp_dir=./exp/self-pretrain
 save_dir=./exp/stage-3
 mkdir -p $save_dir
 mkdir -p ${save_dir}/models
 
-CUDA_CACHE_DISABLE=1 CUDA_VISIBLE_DEVICES=1,2,3,4,5,6,7 python -W ignore ../src/run_ft.py \
+CUDA_CACHE_DISABLE=1 CUDA_VISIBLE_DEVICES=0,1,2,3, python -W ignore ../src/run_ft.py \
 --data-train ${tr_data} --data-val ${te_data} --save-dir $save_dir --n_classes 2 \
 --lr $lr --n-epochs ${epoch} --batch-size $batch_size \
 --lrscheduler_start ${lrscheduler_start} --lrscheduler_decay ${lrscheduler_decay} --lrscheduler_step ${lrscheduler_step} \
