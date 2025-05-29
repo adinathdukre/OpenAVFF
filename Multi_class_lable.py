@@ -2,8 +2,8 @@ import os
 import csv
 
 # Set the path to your train folder
-train_dir = '/l/PathoGen/Adinath/Train_Test_split/train'
-output_csv = 'train_videos_labels_MC.csv'
+train_dir = '/l/PathoGen/Adinath/Train_Test_split/test'
+output_csv = 'test_videos_labels_MC.csv'
 
 # Define the folder-to-label mapping
 folder_to_label = {
