@@ -19,7 +19,7 @@ norm_pix_loss=True
 # pretrain_path=/l/PathoGen/Adinath/OpenAVFF/stage-3.pth
 
 lr=1e-5
-head_lr=1
+head_lr=50
 epoch=10
 lrscheduler_start=2
 lrscheduler_decay=0.5
@@ -35,23 +35,23 @@ lr_adapt=False
 
 n_print_steps=100
 
-tr_data=/l/PathoGen/Adinath/OpenAVFF/train_videos_labels_MC.csv
-te_data=/l/PathoGen/Adinath/OpenAVFF/val_videos_labels_MC.csv
+tr_data=/l/PathoGen/Adinath/OpenAVFF/train_videos_labels.csv
+te_data=/l/PathoGen/Adinath/OpenAVFF/val_videos_labels.csv
 
 # exp_dir=./exp/self-pretrain
-save_dir=./exp1/stage-3
+save_dir=./exp3/stage-3
 mkdir -p $save_dir
 mkdir -p ${save_dir}/models
 
 CUDA_CACHE_DISABLE=1 CUDA_VISIBLE_DEVICES=0,1,2,3, python -W ignore ../src/run_ft.py \
---data-train ${tr_data} --data-val ${te_data} --save-dir $save_dir --n_classes 8 \
+--data-train ${tr_data} --data-val ${te_data} --save-dir $save_dir --n_classes 2 \
 --lr $lr --n-epochs ${epoch} --batch-size $batch_size \
 --lrscheduler_start ${lrscheduler_start} --lrscheduler_decay ${lrscheduler_decay} --lrscheduler_step ${lrscheduler_step} \
 --dataset_mean ${dataset_mean} --dataset_std ${dataset_std} --target_length ${target_length} --noise ${noise} \
 --lr_adapt ${lr_adapt} \
 --norm_pix_loss ${norm_pix_loss} \
 --mae_loss_weight ${mae_loss_weight} --contrast_loss_weight ${contrast_loss_weight} \
---loss CE --metrics acc --warmup True \
+--loss BCE --metrics mAP --warmup True \
 --wa_start ${wa_start} --wa_end ${wa_end} --lr_adapt ${lr_adapt} \
 --head_lr ${head_lr} \
 --num_workers 32\
