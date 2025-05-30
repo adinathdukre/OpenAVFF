@@ -35,8 +35,8 @@ lr_adapt=False
 
 n_print_steps=100
 
-tr_data=/l/PathoGen/Adinath/OpenAVFF/train_videos_labels.csv
-te_data=/l/PathoGen/Adinath/OpenAVFF/val_videos_labels.csv
+tr_data=/l/PathoGen/Adinath/train_videos_labels.csv
+te_data=/l/PathoGen/Adinath/val_videos_labels.csv
 
 # exp_dir=./exp/self-pretrain
 save_dir=./exp3/stage-3
