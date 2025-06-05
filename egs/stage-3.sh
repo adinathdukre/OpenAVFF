@@ -44,14 +44,14 @@ mkdir -p $save_dir
 mkdir -p ${save_dir}/models
 
 CUDA_CACHE_DISABLE=1 CUDA_VISIBLE_DEVICES=0,1,2,3, python -W ignore ../src/run_ft.py \
---data-train ${tr_data} --data-val ${te_data} --save-dir $save_dir --n_classes 2 \
+--data-train ${tr_data} --data-val ${te_data} --save-dir $save_dir --n_classes 8 \
 --lr $lr --n-epochs ${epoch} --batch-size $batch_size \
 --lrscheduler_start ${lrscheduler_start} --lrscheduler_decay ${lrscheduler_decay} --lrscheduler_step ${lrscheduler_step} \
 --dataset_mean ${dataset_mean} --dataset_std ${dataset_std} --target_length ${target_length} --noise ${noise} \
 --lr_adapt ${lr_adapt} \
 --norm_pix_loss ${norm_pix_loss} \
 --mae_loss_weight ${mae_loss_weight} --contrast_loss_weight ${contrast_loss_weight} \
---loss BCE --metrics mAP --warmup True \
+--loss CE --metrics acc --warmup True \
 --wa_start ${wa_start} --wa_end ${wa_end} --lr_adapt ${lr_adapt} \
 --head_lr ${head_lr} \
 --num_workers 32\
