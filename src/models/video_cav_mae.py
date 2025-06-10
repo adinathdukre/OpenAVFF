@@ -269,7 +269,7 @@ class VideoCAVMAE(nn.Module):
     
 class VideoCAVMAEFT(nn.Module):
     def __init__(self, 
-        n_classes=2,
+        n_classes=8,
         img_size=224,
         patch_size=16, 
         n_frames=16, 
