@@ -303,7 +303,7 @@ class VideoAudioDataset(Dataset):
         # frames: (T, C, H, W) -> (C, T, H, W)
         frames = frames.permute(1, 0, 2, 3)
         
-        label = torch.tensor([int(label), 1-int(label)]).float()
+        llabel = int(label)
 
         return fbank, frames, label
 
@@ -411,7 +411,7 @@ class VideoAudioEvalDataset(Dataset):
 
     def __getitem__(self, index):
         video_name, label = self.data[index]
-        label = torch.tensor([int(label), 1-int(label)]).float()
+        label = int(label)
         
         try:
             fbank = self._wav2fbank(video_name)
